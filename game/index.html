@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Nightvault — a heist game</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: #08090d; overflow: hidden; }
+  body { display: grid; place-items: center; font: 14px/1.45 ui-monospace, "SF Mono", Menlo, Consolas, monospace; color: #d6dbe4; }
+  #wrap { position: relative; }
+  canvas { display: block; background: #08090d; border: 1px solid #1b2029; border-radius: 6px; }
+  #hud, #msg, #help { position: absolute; pointer-events: none; text-shadow: 0 1px 2px #000c; }
+  #hud { top: 10px; left: 12px; right: 12px; display: flex; justify-content: space-between; gap: 14px; font-size: 13px; }
+  #msg { inset: 0; display: grid; place-items: center; text-align: center; font-size: 22px; }
+  #msg small { display: block; margin-top: 10px; font-size: 13px; opacity: .75; line-height: 1.6; }
+  #help { bottom: 10px; left: 12px; right: 12px; display: flex; justify-content: space-between; font-size: 12px; opacity: .6; }
+  .meter { display: inline-flex; align-items: center; gap: 6px; }
+  .bar { width: 118px; height: 7px; border: 1px solid #2a3341; border-radius: 99px; overflow: hidden; background: #10151d; }
+  .bar > i { display: block; height: 100%; width: 0%; }
+  .hide { display: none !important; }
+</style>
+</head>
+<body>
+<div id="wrap">
+  <canvas id="c" width="960" height="600"></canvas>
+
+  <div id="hud">
+    <div class="meter">ALARM <span class="bar"><i id="alarm"></i></span> <span id="alarmTxt">quiet</span></div>
+    <div id="lootBox">LOOT <span id="loot">0</span> / <span id="lootMax">4</span></div>
+    <div id="status">Nightvault</div>
+  </div>
+
+  <div id="help">
+    <div>WASD / arrows move &middot; Shift creep</div>
+    <div>E grab loot &middot; Q cut camera &middot; R restart</div>
+  </div>
+
+  <div id="msg">
+    <div>
+      <span id="msgTitle">NIGHTVAULT</span>
+      <small id="msgSub">Four vaults. Three cameras. One exit.<br>Take the loot and get out before the alarm fills.<br><br>Press any key to begin.</small>
+    </div>
+  </div>
+</div>
+
+<script src="game.js"></script>
+</body>
+</html>
